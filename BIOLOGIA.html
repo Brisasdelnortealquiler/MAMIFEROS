@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧬 El Mundo de los Mamíferos</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header con navegación */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: #ffd700;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sección de Contenido Interactivo */
+        .content {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .accordion {
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            transition: background 0.3s ease;
+        }
+
+        .accordion:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .panel {
+            display: none;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-top: 0.5rem;
+        }
+
+        /* Quiz Interactivo */
+        .quiz {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quiz h3 {
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            margin-bottom: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .option {
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .option.correct {
+            background: #55efc4;
+        }
+
+        .option.incorrect {
+            background: #d63031;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>🧬 Mamíferos</h2>
+        <nav>
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#habitat">Hábitat</a></li>
+                <li><a href="#alimentacion">Alimentación</a></li>
+                <li><a href="#reproduccion">Reproducción</a></li>
+                <li><a href="#tipos">Tipos</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div>
+            <h1>🧬 El Mundo de los Mamíferos</h1>
+            <p>Descubre las fascinantes características de los mamíferos en esta página interactiva.</p>
+            <a href="#caracteristicas" class="btn">Explora Ahora</a>
+        </div>
+    </section>
+
+    <div class="content">
+        <section id="caracteristicas" class="section">
+            <h2>🐾 1. Características Generales</h2>
+            <div class="card">
+                <p>Los mamíferos son un grupo de animales vertebrados muy variados, pero todos comparten ciertas características que los distinguen:</p>
+                <ul>
+                    <li>Tienen glándulas mamarias, con las que las hembras producen leche para alimentar a sus crías.</li>
+                    <li>Cuerpo cubierto de pelo o pelaje, que ayuda a mantener la temperatura corporal.</li>
+                    <li>Sangre caliente (homeotermos): pueden mantener una temperatura corporal constante.</li>
+                    <li>Respiran por pulmones durante toda su vida.</li>
+                    <li>Sistema nervioso desarrollado, lo que les permite tener comportamientos complejos.</li>
+                    <li>Corazón con cuatro cavidades, lo que mejora la circulación de oxígeno.</li>
+                </ul>
+                <p><strong>Ejemplos:</strong> perro, gato, elefante, delfín, murciélago, ser humano.</p>
+            </div>
+        </section>
+
+        <section id="habitat" class="section">
+            <h2>🌍 2. Hábitat</h2>
+            <div class="card">
+                <p>Los mamíferos viven en todos los ambientes del planeta:</p>
+                <ul>
+                    <li><strong>Terrestres:</strong> como los leones en la sabana o los osos en los bosques.</li>
+                    <li><strong>Acuáticos:</strong> como las ballenas y los delfines, que viven en mares y océanos.</li>
+                    <li><strong>Aéreos:</strong> como los murciélagos, únicos mamíferos capaces de volar.</li>
+                    <li><strong>Subterráneos:</strong> como los topos, que viven bajo tierra.</li>
+                </ul>
+                <p>👉 Su capacidad de adaptación es una de sus mayores ventajas evolutivas.</p>
+            </div>
+        </section>
+
+        <section id="alimentacion" class="section">
+            <h2>🍽️ 3. Alimentación</h2>
+            <div class="card">
+                <p>Existen tres tipos principales de alimentación en los mamíferos:</p>
+                <ul>
+                    <li><strong>Herbívoros:</strong> comen plantas, hierbas o frutas (vaca, caballo, elefante).</li>
+                    <li><strong>Carnívoros:</strong> se alimentan de carne (león, tigre, gato).</li>
+                    <li><strong>Omnívoros:</strong> comen tanto plantas como carne (cerdo, oso, ser humano).</li>
+                </ul>
+                <p>Tienen diferentes tipos de dientes especializados según su dieta (incisivos, caninos y molares).</p>
+            </div>
+        </section>
+
+        <section id="reproduccion" class="section">
+            <h2>👶 4. Reproducción</h2>
+            <div class="card">
+                <p>La mayoría de los mamíferos son vivíparos, es decir, las crías se desarrollan dentro del cuerpo de la madre.</p>
+                <ul>
+                    <li>Tienen fecundación interna.</li>
+                    <li>Las crías nacen vivas y son alimentadas con leche materna.</li>
+                </ul>
+                <p>Existen tres grandes grupos según cómo se reproducen:</p>
+                <div class="accordion" onclick="toggleAccordion(this)">Placentarios</div>
+                <div class="panel">
+                    <p>Las crías se desarrollan dentro del útero, conectadas por la placenta (humanos, perros, elefantes).</p>
+                </div>
+                <div class="accordion" onclick="toggleAccordion(this)">Marsupiales</div>
+                <div class="panel">
+                    <p>Las crías nacen muy pequeñas y completan su desarrollo en una bolsa (canguro, koala).</p>
+                </div>
+                <div class="accordion" onclick="toggleAccordion(this)">Monotremas</div>
+                <div class="panel">
+                    <p>Ponen huevos (ornitorrinco, equidna).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tipos" class="section">
+            <h2>🐘 5. Tipos o Grupos Principales de Mamíferos</h2>
+            <div class="card">
+                <p>Podemos dividirlos según su forma de vida:</p>
+                <ul>
+                    <li><strong>Mamíferos terrestres:</strong> viven en la tierra (tigre, caballo, humano).</li>
+                    <li><strong>Mamíferos acuáticos:</strong> adaptados al agua (ballena, foca, delfín).</li>
+                    <li><strong>Mamíferos voladores:</strong> capaces de volar (murciélago).</li>
+                    <li><strong>Mamíferos arborícolas:</strong> viven en los árboles (mono, ardilla).</li>
+                    <li><strong>Mamíferos subterráneos:</strong> viven bajo tierra (topo).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="quiz" class="section">
+            <h2>🧠 Quiz Interactivo sobre Mamíferos</h2>
+            <div class="quiz">
+                <div class="question">
+                    <h3>¿Cuál es una característica única de los mamíferos?</h3>
+                    <div class="options">
+                        <div class="option" data-correct="true">Tienen glándulas mamarias para producir leche.</div>
+                        <div class="option">Ponen huevos como los reptiles.</div>
+                        <div class="option">Respiran por branquias.</div>
+                        <div class="option">Son ectotermos.</div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h3>¿Qué tipo de alimentación tienen los humanos?</h3>
+                    <div class="options">
+                        <div class="option">Herbívoros</div>
+                        <div class="option" data-correct="true">Omnívoros</div>
+                        <div class="option">Carnívoros</div>
+                        <div class="option">Ninguno</div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h3>¿Cuál es un ejemplo de mamífero marsupial?</h3>
+                    <div class="options">
+                        <div class="option">Elefante</div>
+                        <div class="option" data-correct="true">Canguro</div>
+                        <div class="option">Delfín</div>
+                        <div class="option">Murciélago</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Página Educativa sobre Mamíferos. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Animaciones de scroll
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Función para acordeones
+        function toggleAccordion(element) {
+            const panel = element.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+
+        // Lógica del quiz
+        const options = document.querySelectorAll('.option');
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const isCorrect = option.hasAttribute('data-correct');
+                if (isCorrect) {
+                    option.classList.add('correct');
+                } else {
+                    option.classList.add('incorrect');
+                }
+                // Deshabilitar otras opciones en la misma pregunta
+                const question = option.closest('.question');
+                question.querySelectorAll('.option').forEach(opt => opt.style.pointerEvents = 'none');
+            });
+        });
+
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
